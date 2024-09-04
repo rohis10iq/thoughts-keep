@@ -10,11 +10,11 @@ interface Note {
   content: string;
 }
 
-interface CreateAreaProps {
+interface CreateProps {
   onAdd: (note: Note) => void;
 }
 
-export default function CreateArea({ onAdd }: CreateAreaProps) {
+export default function CreateArea({ onAdd }: CreateProps) {
   const [note, setNote] = useState<Note>({ title: "", content: "" });
   const auth = getAuth();
 
