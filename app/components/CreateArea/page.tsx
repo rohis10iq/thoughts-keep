@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "@/app/firebase/firebase";
-
 import { getAuth } from "firebase/auth";
 
 interface Note {
@@ -32,7 +31,6 @@ export default function CreateArea({ onAdd }: CreateAreaProps) {
     event.preventDefault();
     onAdd(note);
 
-  
     const user = auth.currentUser;
     if (user) {
       try {
