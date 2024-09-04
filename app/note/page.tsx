@@ -65,10 +65,9 @@ export default function Page() {
           title: newNote.title,
           content: newNote.content,
           userId,
-          createdAt: new Date(), // Add a timestamp for ordering if needed
+          createdAt: new Date(), 
         });
 
-        // Immediately update UI optimistically
         setNotes((prevNotes) => [
           ...prevNotes,
           { ...newNote, id: docRef.id },
