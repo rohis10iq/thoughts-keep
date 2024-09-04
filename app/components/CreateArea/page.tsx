@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "@/app/firebase/firebase";
@@ -30,14 +32,14 @@ export default function CreateArea({ onAdd }: CreateAreaProps) {
     event.preventDefault();
     onAdd(note);
 
-    // Save to Firebase if authenticated
+  
     const user = auth.currentUser;
     if (user) {
       try {
         await addDoc(collection(db, "notes"), {
           title: note.title,
           content: note.content,
-          uid: user.uid, // Associate note with the authenticated user
+          uid: user.uid,
           createdAt: new Date(),
         });
         console.log("Note saved to Firebase");
