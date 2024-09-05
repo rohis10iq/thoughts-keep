@@ -75,4 +75,4 @@ export function CreateArea({ onAdd }: CreateProps) {
   );
 }
 
-export default CreateArea; 
+export default CreateArea;

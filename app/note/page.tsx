@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Note from "../components/Note/Note";
-import CreateArea from "../components/CreateArea/page";
+import CreateArea from "../components/CreateArea/CreateArea";
 import { db, auth } from "../firebase/firebase";
 import { collection, addDoc, onSnapshot, query, where } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
