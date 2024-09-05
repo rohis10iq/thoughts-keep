@@ -20,10 +20,8 @@ export default function Page() {
   useEffect(() => {
     const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log("User is authenticated:", user.uid);
         setUserId(user.uid);
       } else {
-        console.log("User is not authenticated");
         setUserId(null);
         setNotes([]); // Clear notes if the user logs out
       }
@@ -36,7 +34,6 @@ export default function Page() {
 
   useEffect(() => {
     if (userId) {
-      console.log("Fetching notes for user:", userId);
       const q = query(
         collection(db, "notes"),
         where("userId", "==", userId)
@@ -49,7 +46,6 @@ export default function Page() {
           content: doc.data().content,
         }));
         setNotes(fetchedNotes);
-        console.log("Fetched notes:", fetchedNotes);
       });
 
       return () => {
@@ -65,16 +61,13 @@ export default function Page() {
           title: newNote.title,
           content: newNote.content,
           userId,
-          createdAt: new Date(), 
+          createdAt: new Date(),
         });
 
         setNotes((prevNotes) => [
           ...prevNotes,
           { ...newNote, id: docRef.id },
         ]);
-        console.log("Note added:", { ...newNote, id: docRef.id });
-      } else {
-        console.error("No user is authenticated, cannot add note");
       }
     } catch (error) {
       console.error("Error adding note:", error);
@@ -83,21 +76,22 @@ export default function Page() {
 
   const deleteNote = (id: string) => {
     setNotes((prevNotes) => prevNotes.filter((noteItem) => noteItem.id !== id));
-    console.log("Note deleted with id:", id);
   };
 
   return (
-    <>
+    <div className="container mx-auto p-4 max-w-7xl">
       <CreateArea onAdd={addNote} />
-      {notes.map((noteItem, index) => (
-        <Note
-          key={index}
-          id={index}
-          title={noteItem.title}
-          content={noteItem.content}
-          onDelete={() => deleteNote(noteItem.id!)}
-        />
-      ))}
-    </>
+      <div className="grid grid-cols-1 gap-4 mt-6 sm:grid-cols-2 lg:grid-cols-3">
+        {notes.map((noteItem, index) => (
+          <Note
+            key={index}
+            id={index}
+            title={noteItem.title}
+            content={noteItem.content}
+            onDelete={() => deleteNote(noteItem.id!)}
+          />
+        ))}
+      </div>
+    </div>
   );
 }
