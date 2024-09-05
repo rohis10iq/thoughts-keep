@@ -14,7 +14,7 @@ interface CreateProps {
   onAdd: (note: Note) => void;
 }
 
-export default function CreateArea({ onAdd }: CreateProps) {
+export function CreateArea({ onAdd }: CreateProps) { 
   const [note, setNote] = useState<Note>({ title: "", content: "" });
   const auth = getAuth();
 
@@ -74,3 +74,5 @@ export default function CreateArea({ onAdd }: CreateProps) {
     </div>
   );
 }
+
+export default CreateArea; 
