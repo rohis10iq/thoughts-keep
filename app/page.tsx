@@ -33,13 +33,13 @@ export default function Home() {
       </p>
       <div className="flex space-x-4 sm:space-x-6">
         <button
-          className="button py-2 px-4 sm:py-3 sm:px-6 rounded-lg font-bold shadow-md text-lg sm:text-xl transition-colors duration-300 ease-in-out bg-white text-[#f5ba13] hover:bg-[#f3e57c] hover:text-[#323030]"
+          className="button py-2 px-4 sm:py-3 sm:px-6 rounded-lg font-bold shadow-md text-lg sm:text-xl transition-colors duration-300 ease-in-out bg-white text-[#323030] hover:bg-[#f3e57c] hover:text-[#323030]"
           onClick={handleSignIn}
         >
           Sign In
         </button>
         <button
-          className="button py-2 px-4 sm:py-3 sm:px-6 rounded-lg font-bold shadow-md text-lg sm:text-xl transition-colors duration-300 ease-in-out bg-white text-[#f5ba13] hover:bg-[#f3e57c] hover:text-[#323030]"
+          className="button py-2 px-4 sm:py-3 sm:px-6 rounded-lg font-bold shadow-md text-lg sm:text-xl transition-colors duration-300 ease-in-out bg-white text-[#323030] hover:bg-[#f3e57c] hover:text-[#323030]"
           onClick={handleContinue}
         >
           Continue as Guest
